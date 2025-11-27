@@ -1,0 +1,16 @@
+{
+  "name": "bitrix24-webhook",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:client": "npm install --prefix client",
+    "install:server": "npm install --prefix server",
+    "install": "npm run install:client && npm run install:server",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev": "npm-run-all --parallel dev:client dev:server"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
