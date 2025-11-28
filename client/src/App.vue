@@ -37,11 +37,15 @@ watch(fetchedTotal, (newTotal) => {
 
         <span>Всего получено: {{ fetchedTotal }}</span>
         <div class="pagination" v-if="!loading && !error && totalCompanies > 0">
-            <button @click="firstPage" :disabled="page <= 1"><<</button>
-            <button @click="prevPage" :disabled="page <= 1"><</button>
+            <button @click="firstPage" :disabled="page <= 1">&lt;&lt;</button>
+            <button @click="prevPage" :disabled="page <= 1">&lt;</button>
             <span>Страница {{ page }} из {{ totalPages }}</span>
-            <button @click="nextPage" :disabled="page >= totalPages">></button>
-            <button @click="lastPage" :disabled="page >= totalPages">>></button>
+            <button @click="nextPage" :disabled="page >= totalPages">
+                &gt;
+            </button>
+            <button @click="lastPage" :disabled="page >= totalPages">
+                &gt;&gt;
+            </button>
         </div>
 
         <CompaniesList
@@ -54,11 +58,15 @@ watch(fetchedTotal, (newTotal) => {
             class="pagination"
             v-if="!loading && !error && totalCompanies > limit"
         >
-            <button @click="firstPage" :disabled="page <= 1"><<</button>
-            <button @click="prevPage" :disabled="page <= 1"><</button>
+            <button @click="firstPage" :disabled="page <= 1">&lt;&lt;</button>
+            <button @click="prevPage" :disabled="page <= 1">&lt;</button>
             <span>Страница {{ page }} из {{ totalPages }}</span>
-            <button @click="nextPage" :disabled="page >= totalPages">></button>
-            <button @click="lastPage" :disabled="page >= totalPages">>></button>
+            <button @click="nextPage" :disabled="page >= totalPages">
+                &gt;
+            </button>
+            <button @click="lastPage" :disabled="page >= totalPages">
+                &gt;&gt;
+            </button>
         </div>
     </main>
 </template>

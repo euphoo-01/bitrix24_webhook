@@ -27,6 +27,8 @@ app.get("/api/getAllCompanies", controller.getAllCompanies);
 
 app.get("/api/getCompanies", controller.getCompaniesByFilterAndPage);
 
+app.get("/health", (_, res) => res.status(200).json({ status: "ok" }));
+
 app.listen(port, () => {
 	console.log(`Сервер успешно запущен на порту: ${port}`);
 });
