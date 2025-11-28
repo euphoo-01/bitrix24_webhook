@@ -37,7 +37,7 @@ export class CompanyController {
 					Number(limit),
 					String(search)
 				);
-			res.status(200).json({ success: true, total, companies });
+			res.status(200).json({ success: true, total, data: companies });
 		} catch (e) {
 			res.status(500).json({
 				success: false,

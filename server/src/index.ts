@@ -1,10 +1,13 @@
 import express from "express";
+import cors from "cors";
 import { configDotenv } from "dotenv";
 import { CompanyController } from "./controllers/CompanyController";
 import { CompanyService } from "./services/CompanyService";
 import { BitrixClient } from "./entities/BitrixClient";
 
 const app = express();
+app.use(cors());
+
 const port = 3000;
 
 configDotenv();
