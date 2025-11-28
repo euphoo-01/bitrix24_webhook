@@ -2,7 +2,7 @@ import { ref, computed, watch, type Ref } from "vue";
 
 export function usePagination(
     totalItems: Ref<number>,
-    initialLimit: number = 10
+    initialLimit: number = 100
 ) {
     const page = ref(1);
     const limit = ref(initialLimit);
@@ -31,11 +31,21 @@ export function usePagination(
         }
     };
 
+    const lastPage = () => {
+        page.value = totalPages.value;
+    };
+
+    const firstPage = () => {
+        page.value = 1;
+    };
+
     return {
         page,
         limit,
         totalPages,
         nextPage,
         prevPage,
+        lastPage,
+        firstPage,
     };
 }

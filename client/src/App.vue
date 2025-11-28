@@ -8,10 +8,8 @@ import { useCompanies } from "./composables/useCompanies";
 const { immediateSearchTerm, debouncedSearchTerm } = useSearch(500);
 
 const totalCompanies = ref(0);
-const { page, limit, totalPages, nextPage, prevPage } = usePagination(
-    totalCompanies,
-    10
-);
+const { page, limit, totalPages, nextPage, prevPage, lastPage, firstPage } =
+    usePagination(totalCompanies, 100);
 
 const {
     companies,
@@ -37,12 +35,13 @@ watch(fetchedTotal, (newTotal) => {
             />
         </div>
 
+        <span>Всего получено: {{ fetchedTotal }}</span>
         <div class="pagination" v-if="!loading && !error && totalCompanies > 0">
-            <button @click="prevPage" :disabled="page <= 1">Назад</button>
+            <button @click="firstPage" :disabled="page <= 1"><<</button>
+            <button @click="prevPage" :disabled="page <= 1"><</button>
             <span>Страница {{ page }} из {{ totalPages }}</span>
-            <button @click="nextPage" :disabled="page >= totalPages">
-                Вперед
-            </button>
+            <button @click="nextPage" :disabled="page >= totalPages">></button>
+            <button @click="lastPage" :disabled="page >= totalPages">>></button>
         </div>
 
         <CompaniesList
@@ -55,18 +54,18 @@ watch(fetchedTotal, (newTotal) => {
             class="pagination"
             v-if="!loading && !error && totalCompanies > limit"
         >
-            <button @click="prevPage" :disabled="page <= 1">Назад</button>
+            <button @click="firstPage" :disabled="page <= 1"><<</button>
+            <button @click="prevPage" :disabled="page <= 1"><</button>
             <span>Страница {{ page }} из {{ totalPages }}</span>
-            <button @click="nextPage" :disabled="page >= totalPages">
-                Вперед
-            </button>
+            <button @click="nextPage" :disabled="page >= totalPages">></button>
+            <button @click="lastPage" :disabled="page >= totalPages">>></button>
         </div>
     </main>
 </template>
 
 <style scoped>
 .container {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Roboto;
     max-width: 800px;
     margin: 2rem auto;
     padding: 1rem;
