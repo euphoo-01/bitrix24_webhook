@@ -22,6 +22,8 @@ const controller = new CompanyController(service);
 
 app.get("/api/getAllCompanies", controller.getAllCompanies);
 
+app.get("/api/getCompanies", controller.getCompaniesByFilterAndPage);
+
 app.listen(port, () => {
 	console.log(`Сервер успешно запущен на порту: ${port}`);
 });
